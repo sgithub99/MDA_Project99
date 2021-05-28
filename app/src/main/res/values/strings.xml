@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MDA_Project</string>
+    <string name="title_activity_information">Map</string>
+    <string name="sign_up">Sign up</string>
+    <string name="fullname">Fullname</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login_here">Already have an account? Login</string>
+    <string name="login">Login</string>
+    <string name="signup_here">Create a new account? Sign up</string>
+</resources>

@@ -1,0 +1,2 @@
+rootProject.name = "MDA_Project"
+include ':app'

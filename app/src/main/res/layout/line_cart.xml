@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="10">
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="3">
+
+        <ImageView
+            android:id="@+id/imageviewCart"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:adjustViewBounds="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="7"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textviewCartName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name product"
+            android:textColor="#000000"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textviewCartPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="Price"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <LinearLayout
+
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:focusable="false"
+                android:backgroundTint="#5DB075"
+                android:text="-"
+                android:id="@+id/buttonminus"
+                android:layout_marginTop="5dp"
+                android:textSize="30sp"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:background="@null"
+                android:focusable="false"
+                android:backgroundTint="#ffffff"
+                android:text="1"
+                android:textColor="#000000"
+                android:id="@+id/buttonvalues"
+                android:layout_marginTop="5dp"
+                android:textSize="30sp"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:focusable="false"
+                android:backgroundTint="#5DB075"
+                android:text="+"
+                android:id="@+id/buttonplus"
+                android:layout_marginTop="5dp"
+                android:textSize="30sp"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
