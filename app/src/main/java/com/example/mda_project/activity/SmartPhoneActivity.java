@@ -52,7 +52,7 @@ public class SmartPhoneActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smart_phone);
-        anhXa();
+        getProperties();
         if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
             getIdProType();
             actionToolBar();
@@ -165,7 +165,7 @@ public class SmartPhoneActivity extends AppCompatActivity {
         Log.d("Type of product value", proID + "");
     }
 
-    private void anhXa() {
+    private void getProperties() {
         toolbarSP = findViewById(R.id.toolbarSmartPhone);
         listViewSP = findViewById(R.id.listviewSmartPhone);
         listSP = new ArrayList<>();

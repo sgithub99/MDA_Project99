@@ -100,7 +100,6 @@ public class LaptopActivity extends AppCompatActivity {
         setSupportActionBar(toolbarLaptop);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbarLaptop.setNavigationOnClickListener(v -> finish());
-
     }
 
     private void getData(int Page) {

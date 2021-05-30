@@ -41,7 +41,7 @@ public class DetailProduct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_product);
-        anhXa();
+        getProperties();
         actionToolBar();
         getInformation();
         catchEventSpinner();
@@ -122,7 +122,7 @@ public class DetailProduct extends AppCompatActivity {
 
     }
 
-    private void anhXa() {
+    private void getProperties() {
         toolbarDetailProduct = findViewById(R.id.toolbarDetailProduct);
         imgDetailProduct = findViewById(R.id.imageviewDetailProduct);
         txtNamePro = findViewById(R.id.textviewDetailProductName);
