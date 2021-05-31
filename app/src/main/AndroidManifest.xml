@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MDA_Project">
-        <activity android:name=".activity.SignUp"/>
+        <activity android:name=".activity.TabletActivity"></activity>
+        <activity android:name=".activity.SignUp" />
         <activity android:name=".activity.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,8 +47,7 @@
         <activity android:name=".activity.ContactActivity" />
         <activity android:name=".activity.LaptopActivity" />
         <activity android:name=".activity.SmartPhoneActivity" />
-        <activity android:name=".activity.MainActivity"/>
-
+        <activity android:name=".activity.MainActivity" />
     </application>
 
 </manifest>

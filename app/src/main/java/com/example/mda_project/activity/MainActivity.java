@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     int id = 0;
     String typeProName = "";
     String typeProImage = "";
-    ArrayList<Product> lisProduct;
+    ArrayList<Product> listProduct;
     ProAdapter proAdapter;
     public static ArrayList<Cart> listCart;
 
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             getNewestPro();
             catchOnItemListView();
         } else {
-            CheckConnection.showToast_Short(getApplicationContext(), "Kiểm tra lại kết nối nhé bạn!");
+            CheckConnection.showToast_Short(getApplicationContext(), "Retry your connection !");
             finish();
         }
     }
@@ -131,6 +131,17 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 3:
                     if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
+                        Intent intent = new Intent(MainActivity.this, TabletActivity.class);
+                        intent.putExtra("typeProId", listTypePro.get(position).getTypeProId());
+                        startActivity(intent);
+                    } else {
+                        CheckConnection.showToast_Short(getApplicationContext(), "Please check your connection!");
+                    }
+                    Log.d("Name Tablet:", listTypePro.get(position).getProName());
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
+                case 4:
+                    if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
                         Intent intent = new Intent(MainActivity.this, ContactActivity.class);
                         startActivity(intent);
                     } else {
@@ -138,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     drawerLayout.closeDrawer(GravityCompat.START);
                     break;
-                case 4:
+                case 5:
                     if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
                         Intent intent = new Intent(MainActivity.this, InformationActivity.class);
                         startActivity(intent);
@@ -171,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                         proImage = jsonObject.getString("proImage");
                         description = jsonObject.getString("description");
                         typeProId = jsonObject.getInt("typeProId");
-                        lisProduct.add(new Product(proId, proName, price, proImage, description, typeProId));
+                        listProduct.add(new Product(proId, proName, price, proImage, description, typeProId));
                         proAdapter.notifyDataSetChanged();
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -244,8 +255,8 @@ public class MainActivity extends AppCompatActivity {
         listTypePro.add(0, new TypeProduct(0, "Home", "https://www.nicepng.com/png/full/14-142284_png-file-svg-home-icon-black-circle.png"));
         typeProAdapter = new TypeProAdapter(listTypePro, getApplicationContext());
         listViewHome.setAdapter(typeProAdapter);
-        lisProduct = new ArrayList<>();
-        proAdapter = new ProAdapter(getApplicationContext(), lisProduct);
+        listProduct = new ArrayList<>();
+        proAdapter = new ProAdapter(getApplicationContext(), listProduct);
         recyclerViewHome.setHasFixedSize(true);
         recyclerViewHome.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         recyclerViewHome.setAdapter(proAdapter);

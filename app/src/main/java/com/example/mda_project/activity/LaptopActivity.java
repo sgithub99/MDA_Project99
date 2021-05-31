@@ -52,7 +52,7 @@ public class LaptopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_laptop);
-        anhxa();
+        getProperties();
 
         if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
             getIdProType();
@@ -81,7 +81,7 @@ public class LaptopActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void anhxa() {
+    private void getProperties() {
         toolbarLaptop = findViewById(R.id.toolbarLaptop);
         listViewLaptop = findViewById(R.id.listviewLaptop);
         listLaptop = new ArrayList<>();
@@ -102,9 +102,9 @@ public class LaptopActivity extends AppCompatActivity {
         toolbarLaptop.setNavigationOnClickListener(v -> finish());
     }
 
-    private void getData(int Page) {
+    private void getData(int page) {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        String linkSp = Server.linkSmartPhone + page;
+        String linkSp = Server.linkItem + page;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, linkSp, response -> {
             int proId;
             String proName;
@@ -134,7 +134,7 @@ public class LaptopActivity extends AppCompatActivity {
             else{
                 limitData = true;
                 listViewLaptop.removeFooterView(footerview);
-                CheckConnection.showToast_Short(getApplicationContext(), "Out of data");
+                CheckConnection.showToast_Short(getApplicationContext(), "Out of product");
             }
 
         }, error -> {
@@ -164,7 +164,7 @@ public class LaptopActivity extends AppCompatActivity {
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if (firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0 && isLoading == false && limitData == false) {
+                if (firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0 && !isLoading && !limitData) {
                     isLoading = true;
                     ThreadData threadData = new ThreadData();
                     threadData.start();

@@ -1,5 +1,19 @@
 package com.example.mda_project.activity;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.mda_project.R;
+import com.example.mda_project.adapter.SmartPhoneAdapter;
+import com.example.mda_project.adapter.TabletAdapter;
+import com.example.mda_project.model.Product;
+import com.example.mda_project.util.CheckConnection;
+import com.example.mda_project.util.Server;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,20 +27,6 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.mda_project.R;
-import com.example.mda_project.adapter.SmartPhoneAdapter;
-import com.example.mda_project.model.Product;
-import com.example.mda_project.util.CheckConnection;
-import com.example.mda_project.util.Server;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,11 +35,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SmartPhoneActivity extends AppCompatActivity {
-
+public class TabletActivity extends AppCompatActivity {
     Toolbar toolbarSP;
     ListView listViewSP;
-    SmartPhoneAdapter smartPhoneAdapter;
+    TabletAdapter tabletAdapter;
     ArrayList<Product> listSP;
     int proID = 0;
     int page = 1;
@@ -51,7 +50,7 @@ public class SmartPhoneActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_smart_phone);
+        setContentView(R.layout.activity_tablet);
         getProperties();
         if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
             getIdProType();
@@ -63,7 +62,6 @@ public class SmartPhoneActivity extends AppCompatActivity {
             finish();
         }
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -79,6 +77,7 @@ public class SmartPhoneActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     private void loadMoreData() {
         listViewSP.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -128,7 +127,7 @@ public class SmartPhoneActivity extends AppCompatActivity {
                         description = jsonObject.getString("description");
                         proTypeId = jsonObject.getInt("typeProId");
                         listSP.add(new Product(proId, proName, price, proImage, description, proTypeId));
-                        smartPhoneAdapter.notifyDataSetChanged();
+                        tabletAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -165,11 +164,11 @@ public class SmartPhoneActivity extends AppCompatActivity {
     }
 
     private void getProperties() {
-        toolbarSP = findViewById(R.id.toolbarSmartPhone);
-        listViewSP = findViewById(R.id.listviewSmartPhone);
+        toolbarSP = findViewById(R.id.toolbarTablet);
+        listViewSP = findViewById(R.id.listviewTablet);
         listSP = new ArrayList<>();
-        smartPhoneAdapter = new SmartPhoneAdapter(getApplicationContext(), listSP);
-        listViewSP.setAdapter(smartPhoneAdapter);
+        tabletAdapter = new TabletAdapter(getApplicationContext(), listSP);
+        listViewSP.setAdapter(tabletAdapter);
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         footerview = inflater.inflate(R.layout.processbar, null);
         mHandler = new MHandler();
@@ -207,4 +206,5 @@ public class SmartPhoneActivity extends AppCompatActivity {
             super.run();
         }
     }
+
 }

@@ -100,6 +100,7 @@ public class DetailProduct extends AppCompatActivity {
         spinner.setAdapter(arrayAdapter);
     }
 
+    //lấy dữ liệu từ màn hình khác truyền vào
     private void getInformation() {
         Product product = (Product) getIntent().getSerializableExtra("detailProduct");
         proId = product.getProId();
