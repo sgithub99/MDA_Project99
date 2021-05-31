@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -9,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#5DB075"
-        android:title="Information"
-        android:titleTextColor="#ffffff"></androidx.appcompat.widget.Toolbar>
+        app:title="Information"
+        app:titleTextColor="#ffffff" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="About us"
+            android:text="@string/about_us"
             android:textColor="#ffffff"
             android:textSize="30sp" />
 
@@ -38,7 +39,7 @@
             <ImageView
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:src="@drawable/location" />
 
             <TextView
@@ -46,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="30dp"
                 android:gravity="center"
-                android:text="Location: 10km Nguyen Trai Street, Ha Dong district, Ha Noi"
+                android:text="@string/location_10km_nguyen_trai_street_ha_dong_district_ha_noi"
                 android:textColor="#000000" />
         </LinearLayout>
 

@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //lấy dữ liệu trên thanh menu
     private void catchOnItemListView() {
         listViewHome.setOnItemClickListener((parent, view, position, id) -> {
             switch (position) {
@@ -158,6 +160,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                     drawerLayout.closeDrawer(GravityCompat.START);
                     break;
+                case 6:
+                    if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
+                        Intent intent = new Intent(MainActivity.this, Setting.class);
+                        startActivity(intent);
+                    } else {
+                        CheckConnection.showToast_Short(getApplicationContext(), "Please check your connection!");
+                    }
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
 
             }
         });
@@ -210,8 +221,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 Log.d("tag", response.toString());
-                listTypePro.add(4, new TypeProduct(0, "Contact", "https://i.pinimg.com/564x/f3/3c/c0/f33cc07fa0044261d61a6645a67ef496.jpg"));
-                listTypePro.add(5, new TypeProduct(0, "About us", "https://i.pinimg.com/564x/ef/cc/0b/efcc0b99fc5625dbd66dc80216009226.jpg"));
+                listTypePro.add(4, new TypeProduct(0, "Contact", "https://icon-library.com/images/contact-icon-png/contact-icon-png-1.jpg"));
+                listTypePro.add(5, new TypeProduct(0, "About us", "https://images.squarespace-cdn.com/content/v1/51d1b303e4b05d425c862fb3/1380296194530-I3NSAG45PSHLV02AFYXB/ke17ZwdGBToddI8pDm48kGfiFqkITS6axXxhYYUCnlRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxQ1ibo-zdhORxWnJtmNCajDe36aQmu-4Z4SFOss0oowgxUaachD66r8Ra2gwuBSqM/iconmonstr-info-2-icon.png"));
+                listTypePro.add(6, new TypeProduct(0, "Setting", "http://simpleicon.com/wp-content/uploads/setting2.png"));
             }
         }, error -> CheckConnection.showToast_Short(getApplicationContext(), error.toString()));
         requestQueue.add(jsonArrayRequest);
@@ -260,11 +272,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewHome.setHasFixedSize(true);
         recyclerViewHome.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         recyclerViewHome.setAdapter(proAdapter);
+
+
         if(listCart != null){
 
         }else {
             listCart = new ArrayList<>();
-
         }
     }
 }

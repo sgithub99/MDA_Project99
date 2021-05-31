@@ -32,7 +32,7 @@
             android:id="@+id/textviewCartName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name product"
+            android:text="@string/name_product"
             android:textColor="#000000"
             android:textSize="25sp" />
 
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="Price"
+            android:text="@string/price"
             android:textColor="#000000"
             android:textSize="20sp" />
 
@@ -69,7 +69,7 @@
                 android:textColor="#000000"
                 android:id="@+id/buttonvalues"
                 android:layout_marginTop="5dp"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"/>
             <Button

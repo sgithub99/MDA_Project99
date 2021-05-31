@@ -38,7 +38,7 @@ public class InforCustomerActiviry extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_infor_customer_activiry);
-        anhxa();
+        getProperties();
         getClickCancel();
         if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
             eventButton();
@@ -128,7 +128,7 @@ public class InforCustomerActiviry extends AppCompatActivity {
         });
     }
 
-    private void anhxa() {
+    private void getProperties() {
         editTextCusName = findViewById(R.id.editTextNameCustomer);
         editTextEmail = findViewById(R.id.editTextNameEmail);
         editTextPhone = findViewById(R.id.editTextNamePhoneCustomer);

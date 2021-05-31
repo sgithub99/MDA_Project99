@@ -6,16 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.TabletActivity">
+
     <androidx.appcompat.widget.Toolbar
         app:title="Tablet"
         android:background="#5DB075"
         app:titleTextColor="#FFFFFF"
         android:id="@+id/toolbarTablet"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"></androidx.appcompat.widget.Toolbar>
+        android:layout_height="?attr/actionBarSize" />
+
     <ListView
         android:id="@+id/listviewTablet"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

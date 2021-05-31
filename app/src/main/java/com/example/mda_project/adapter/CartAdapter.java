@@ -83,27 +83,24 @@ public class CartAdapter extends BaseAdapter {
             viewHolder.btnminus.setVisibility(View.VISIBLE);
             viewHolder.btnplus.setVisibility(View.VISIBLE);
         }
-        viewHolder.btnplus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int newNumber = Integer.parseInt(viewHolder.btnvalues.getText().toString()) + 1;
-                int nowNumber = MainActivity.listCart.get(position).getProNumber();
-                long nowPrice = MainActivity.listCart.get(position).getPrice();
-                MainActivity.listCart.get(position).setProNumber(newNumber);
-                long newPrice = (nowPrice * newNumber) / nowNumber;
-                MainActivity.listCart.get(position).setPrice(newPrice);
-                DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-                viewHolder.txtCartPrice.setText(decimalFormat.format(newPrice) + "đ");
-                CartActivity.eventUltil();
-                if(newNumber > 9){
-                    viewHolder.btnplus.setVisibility(View.INVISIBLE);
-                    viewHolder.btnminus.setVisibility(View.VISIBLE);
-                    viewHolder.btnvalues.setText(String.valueOf(newNumber));
-                }else{
-                    viewHolder.btnplus.setVisibility(View.VISIBLE);
-                    viewHolder.btnminus.setVisibility(View.VISIBLE);
-                    viewHolder.btnvalues.setText(String.valueOf(newNumber));
-                }
+        viewHolder.btnplus.setOnClickListener(v -> {
+            int newNumber = Integer.parseInt(viewHolder.btnvalues.getText().toString()) + 1;
+            int nowNumber = MainActivity.listCart.get(position).getProNumber();
+            long nowPrice = MainActivity.listCart.get(position).getPrice();
+            MainActivity.listCart.get(position).setProNumber(newNumber);
+            long newPrice = (nowPrice * newNumber) / nowNumber;
+            MainActivity.listCart.get(position).setPrice(newPrice);
+            DecimalFormat decimalFormat1 = new DecimalFormat("###,###,###");
+            viewHolder.txtCartPrice.setText(decimalFormat1.format(newPrice) + "đ");
+            CartActivity.eventUltil();
+            if(newNumber > 9){
+                viewHolder.btnplus.setVisibility(View.INVISIBLE);
+                viewHolder.btnminus.setVisibility(View.VISIBLE);
+                viewHolder.btnvalues.setText(String.valueOf(newNumber));
+            }else{
+                viewHolder.btnplus.setVisibility(View.VISIBLE);
+                viewHolder.btnminus.setVisibility(View.VISIBLE);
+                viewHolder.btnvalues.setText(String.valueOf(newNumber));
             }
         });
         viewHolder.btnminus.setOnClickListener(new View.OnClickListener() {

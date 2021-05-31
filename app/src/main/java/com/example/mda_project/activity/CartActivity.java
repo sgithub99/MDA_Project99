@@ -35,7 +35,7 @@ public class CartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
-        anhXa();
+        getProperties();
         actionToolBar();
         checkData();
         eventUltil();
@@ -119,7 +119,7 @@ public class CartActivity extends AppCompatActivity {
         toolbarCart.setNavigationOnClickListener(v -> finish());
     }
 
-    private void anhXa() {
+    private void getProperties() {
         listViewCart = findViewById(R.id.listviewCart);
         textViewNotification = findViewById(R.id.textviewNotification);
         texttotalMoney = findViewById(R.id.textviewTotalMoney);

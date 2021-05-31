@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -9,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#5DB075"
-        android:title="Information"
-        android:titleTextColor="#ffffff"></androidx.appcompat.widget.Toolbar>
+        app:title="Information"
+        app:titleTextColor="#ffffff" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="Contact us"
+            android:text="@string/contact_us"
             android:textColor="#ffffff"
             android:textSize="30sp" />
 
@@ -55,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:gravity="center"
-                    android:text="My team:"
+                    android:text="@string/my_team"
                     android:textColor="#000000" />
 
                 <TextView
@@ -63,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:gravity="center"
-                    android:text="Nguyen Huy Hoang "
+                    android:text="@string/nguyen_huy_hoang"
                     android:textColor="#000000" />
 
                 <TextView
@@ -71,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:gravity="center"
-                    android:text="Nguyen Viet Hoang"
+                    android:text="@string/nguyen_viet_hoang"
                     android:textColor="#000000" />
 
                 <TextView
@@ -79,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:gravity="center"
-                    android:text="Nguyen Khanh Nam"
+                    android:text="@string/nguyen_khanh_nam"
                     android:textColor="#000000" />
 
                 <TextView
@@ -87,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:gravity="center"
-                    android:text="Doan Xuan Son"
+                    android:text="@string/doan_xuan_son"
                     android:textColor="#000000" />
             </LinearLayout>
 
@@ -115,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="30dp"
                 android:gravity="center"
-                android:text="Class Name: E17CN01"
+                android:text="@string/company_e17cn01"
                 android:textColor="#000000" />
         </LinearLayout>
     </LinearLayout>
