@@ -46,8 +46,6 @@ public class Setting extends AppCompatActivity {
         setSupportActionBar(toolbarSetting);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbarSetting.setNavigationOnClickListener(v -> finish());
-
-
     }
 
     private void showChangeLanguageDialog() {

@@ -93,11 +93,11 @@ public class CartAdapter extends BaseAdapter {
             DecimalFormat decimalFormat1 = new DecimalFormat("###,###,###");
             viewHolder.txtCartPrice.setText(decimalFormat1.format(newPrice) + "đ");
             CartActivity.eventUltil();
-            if(newNumber > 9){
+            if (newNumber > 9) {
                 viewHolder.btnplus.setVisibility(View.INVISIBLE);
                 viewHolder.btnminus.setVisibility(View.VISIBLE);
                 viewHolder.btnvalues.setText(String.valueOf(newNumber));
-            }else{
+            } else {
                 viewHolder.btnplus.setVisibility(View.VISIBLE);
                 viewHolder.btnminus.setVisibility(View.VISIBLE);
                 viewHolder.btnvalues.setText(String.valueOf(newNumber));
@@ -115,11 +115,11 @@ public class CartAdapter extends BaseAdapter {
                 DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
                 viewHolder.txtCartPrice.setText(decimalFormat.format(newPrice) + "đ");
                 CartActivity.eventUltil();
-                if(newNumber < 2){
+                if (newNumber < 2) {
                     viewHolder.btnplus.setVisibility(View.VISIBLE);
                     viewHolder.btnminus.setVisibility(View.INVISIBLE);
                     viewHolder.btnvalues.setText(String.valueOf(newNumber));
-                }else{
+                } else {
                     viewHolder.btnplus.setVisibility(View.VISIBLE);
                     viewHolder.btnminus.setVisibility(View.VISIBLE);
                     viewHolder.btnvalues.setText(String.valueOf(newNumber));

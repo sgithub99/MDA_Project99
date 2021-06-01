@@ -63,7 +63,7 @@ public class ProAdapter extends RecyclerView.Adapter<ProAdapter.ItemHolder>{
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(context, DetailProduct.class);
                 intent.putExtra("detailProduct", listProducts.get(getLayoutPosition()) );
-                CheckConnection.showToast_Short(context, listProducts.get(getLayoutPosition()).getProName());
+//                CheckConnection.showToast_Short(context, listProducts.get(getLayoutPosition()).getProName());
                 context.startActivity(intent);
             });
         }
