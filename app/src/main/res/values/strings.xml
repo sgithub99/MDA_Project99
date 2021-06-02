@@ -1,4 +1,13 @@
 <resources>
+    <string name="pressure">Pressure</string>
+    <string name="humidity">Humidity</string>
+    <string name="cloud">Cloud</string>
+    <string name="wind">Wind</string>
+    <string name="error">Error</string>
+    <string name="sunset">Sunset</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="weather">Weather</string>
+    <string name="updated">Updated:</string>
     <string name="app_name">MDA_Project</string>
     <string name="title_activity_information">Map</string>
     <string name="sign_up">Sign up</string>

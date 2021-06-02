@@ -71,4 +71,10 @@ public class TabletAdapter extends BaseAdapter {
                 placeholder(R.drawable.noimage).error(R.drawable.error).into(viewHolder.imgTablet);
         return view;
     }
+
+    public void setFilterdList(ArrayList<Product> listProducts) {
+        this.listTablet = listProducts;
+
+        notifyDataSetChanged();
+    }
 }

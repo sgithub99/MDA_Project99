@@ -5,13 +5,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,6 +43,8 @@ public class SmartPhoneActivity extends AppCompatActivity {
     Toolbar toolbarSP;
     ListView listViewSP;
     SmartPhoneAdapter smartPhoneAdapter;
+//    EditText editTextSearch;
+    SearchView searchClickSP;
     ArrayList<Product> listSP;
     int proID = 0;
     int page = 1;
@@ -47,6 +52,7 @@ public class SmartPhoneActivity extends AppCompatActivity {
     boolean isLoading = false;
     boolean limitData = false;
     MHandler mHandler;
+    ArrayList<Product> filterdListSP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,11 +175,38 @@ public class SmartPhoneActivity extends AppCompatActivity {
         listViewSP = findViewById(R.id.listviewSmartPhone);
         listSP = new ArrayList<>();
         smartPhoneAdapter = new SmartPhoneAdapter(getApplicationContext(), listSP);
+//        editTextSearch = findViewById(R.id.editTextSearch);
+        searchClickSP = findViewById(R.id.searchClickSmartPhone);
         listViewSP.setAdapter(smartPhoneAdapter);
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         footerview = inflater.inflate(R.layout.processbar, null);
         mHandler = new MHandler();
 
+        searchClickSP.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterdList(newText);
+                return false;
+            }
+        });
+
+    }
+
+    private void filterdList(String searchText) {
+        filterdListSP = new ArrayList<>();
+
+        for(Product product: listSP) {
+            if(product.getProName().toLowerCase().contains(searchText.toLowerCase())) {
+                filterdListSP.add(product);
+            }
+        }
+
+        smartPhoneAdapter.setFilterdList(filterdListSP);
     }
 
     public class MHandler extends Handler {

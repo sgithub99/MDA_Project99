@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 4:
                     if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
-                        Intent intent = new Intent(MainActivity.this, ContactActivity.class);
+                        Intent intent = new Intent(MainActivity.this, Weather.class);
                         startActivity(intent);
                     } else {
                         CheckConnection.showToast_Short(getApplicationContext(), "Please check your connection!");
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 5:
                     if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
-                        Intent intent = new Intent(MainActivity.this, InformationActivity.class);
+                        Intent intent = new Intent(MainActivity.this, ContactActivity.class);
                         startActivity(intent);
                     } else {
                         CheckConnection.showToast_Short(getApplicationContext(), "Please check your connection!");
@@ -161,6 +161,15 @@ public class MainActivity extends AppCompatActivity {
                     drawerLayout.closeDrawer(GravityCompat.START);
                     break;
                 case 6:
+                    if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
+                        Intent intent = new Intent(MainActivity.this, InformationActivity.class);
+                        startActivity(intent);
+                    } else {
+                        CheckConnection.showToast_Short(getApplicationContext(), "Please check your connection!");
+                    }
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    break;
+                case 7:
                     if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
                         Intent intent = new Intent(MainActivity.this, Setting.class);
                         startActivity(intent);
@@ -221,9 +230,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 Log.d("tag", response.toString());
-                listTypePro.add(4, new TypeProduct(0, "Contact", "https://icon-library.com/images/contact-icon-png/contact-icon-png-1.jpg"));
-                listTypePro.add(5, new TypeProduct(0, "About us", "https://images.squarespace-cdn.com/content/v1/51d1b303e4b05d425c862fb3/1380296194530-I3NSAG45PSHLV02AFYXB/ke17ZwdGBToddI8pDm48kGfiFqkITS6axXxhYYUCnlRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxQ1ibo-zdhORxWnJtmNCajDe36aQmu-4Z4SFOss0oowgxUaachD66r8Ra2gwuBSqM/iconmonstr-info-2-icon.png"));
-                listTypePro.add(6, new TypeProduct(0, "Setting", "http://simpleicon.com/wp-content/uploads/setting2.png"));
+                listTypePro.add(4, new TypeProduct(0, "Weather", "https://static.thenounproject.com/png/967229-200.png"));
+                listTypePro.add(5, new TypeProduct(0, "Contact", "https://icon-library.com/images/contact-icon-png/contact-icon-png-1.jpg"));
+                listTypePro.add(6, new TypeProduct(0, "About us", "https://images.squarespace-cdn.com/content/v1/51d1b303e4b05d425c862fb3/1380296194530-I3NSAG45PSHLV02AFYXB/ke17ZwdGBToddI8pDm48kGfiFqkITS6axXxhYYUCnlRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxQ1ibo-zdhORxWnJtmNCajDe36aQmu-4Z4SFOss0oowgxUaachD66r8Ra2gwuBSqM/iconmonstr-info-2-icon.png"));
+                listTypePro.add(7, new TypeProduct(0, "Setting", "http://simpleicon.com/wp-content/uploads/setting2.png"));
+
             }
         }, error -> CheckConnection.showToast_Short(getApplicationContext(), error.toString()));
         requestQueue.add(jsonArrayRequest);

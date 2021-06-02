@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,13 +40,15 @@ public class TabletActivity extends AppCompatActivity {
     Toolbar toolbarSP;
     ListView listViewSP;
     TabletAdapter tabletAdapter;
-    ArrayList<Product> listSP;
+    ArrayList<Product> listTablet;
     int proID = 0;
     int page = 1;
     View footerview;
     boolean isLoading = false;
     boolean limitData = false;
     MHandler mHandler;
+    SearchView searchClickTablet;
+    ArrayList<Product> filterdListTablet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +86,7 @@ public class TabletActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), DetailProduct.class);
-                intent.putExtra("detailProduct", listSP.get(position));
+                intent.putExtra("detailProduct", listTablet.get(position));
                 startActivity(intent);
             }
         });
@@ -126,7 +129,7 @@ public class TabletActivity extends AppCompatActivity {
                         proImage = jsonObject.getString("proImage");
                         description = jsonObject.getString("description");
                         proTypeId = jsonObject.getInt("typeProId");
-                        listSP.add(new Product(proId, proName, price, proImage, description, proTypeId));
+                        listTablet.add(new Product(proId, proName, price, proImage, description, proTypeId));
                         tabletAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -166,13 +169,38 @@ public class TabletActivity extends AppCompatActivity {
     private void getProperties() {
         toolbarSP = findViewById(R.id.toolbarTablet);
         listViewSP = findViewById(R.id.listviewTablet);
-        listSP = new ArrayList<>();
-        tabletAdapter = new TabletAdapter(getApplicationContext(), listSP);
+        listTablet = new ArrayList<>();
+        tabletAdapter = new TabletAdapter(getApplicationContext(), listTablet);
         listViewSP.setAdapter(tabletAdapter);
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         footerview = inflater.inflate(R.layout.processbar, null);
         mHandler = new MHandler();
+        searchClickTablet = findViewById(R.id.searchClickTablet);
+        searchClickTablet.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterdListTablet(newText);
+                return false;
+            }
+        });
+
+    }
+
+    private void filterdListTablet(String searchText) {
+        filterdListTablet = new ArrayList<>();
+
+        for(Product product: listTablet) {
+            if(product.getProName().toLowerCase().contains(searchText.toLowerCase())) {
+                filterdListTablet.add(product);
+            }
+        }
+
+        tabletAdapter.setFilterdList(filterdListTablet);
     }
 
     public class MHandler extends Handler {

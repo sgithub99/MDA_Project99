@@ -67,7 +67,9 @@ public class InformationActivity extends AppCompatActivity implements OnMapReady
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         gm = googleMap;
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission
+                (this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -80,15 +82,12 @@ public class InformationActivity extends AppCompatActivity implements OnMapReady
         mMap.setMyLocationEnabled(true);
         // Add a marker in Sydney and move the camera
         LatLng myStore = new LatLng(20.980724340587095, 105.78727770297188);
-        mMap.addMarker(new MarkerOptions().position(myStore).title("Electronic devices store").snippet("10 km Nguyen Trai street, Ha Dong district, Ha Noi").icon(BitmapDescriptorFactory.defaultMarker()));
+        mMap.addMarker(new MarkerOptions().position(myStore).title("Electronic devices store").
+                snippet("10 km Nguyen Trai street, Ha Dong district, Ha Noi").icon(BitmapDescriptorFactory.defaultMarker()));
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         CameraPosition cameraPosition = new CameraPosition.Builder().target(myStore).zoom(90).build();
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-//        LatLng hcm = new LatLng(10.762622, 106.660172);
-//        gm = googleMap;
-//        gm.addMarker(new MarkerOptions().position(hcm).title("Marker in HCM City"));
-//        CameraPosition cp = new CameraPosition.Builder().target(hcm).zoom(13).build();
-//        gm.animateCamera(CameraUpdateFactory.newCameraPosition(cp));
+
     }
 
 }

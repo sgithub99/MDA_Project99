@@ -71,4 +71,10 @@ public class LaptopAdapter extends BaseAdapter {
                 placeholder(R.drawable.noimage).error(R.drawable.error).into(viewHolder.imgLaptop);
         return view;
     }
+
+    public void setFilterdList(ArrayList<Product> listProducts) {
+        this.listLaptop = listProducts;
+
+        notifyDataSetChanged();
+    }
 }

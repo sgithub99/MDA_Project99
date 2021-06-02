@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="pressure">Áp suất</string>
+    <string name="humidity">Độ ẩm</string>
+    <string name="cloud">Mây</string>
+    <string name="wind">Gió</string>
+    <string name="error">Lỗi</string>
+    <string name="sunset">Mặt trời lặn</string>
+    <string name="sunrise">Mặt trời mọc</string>
+    <string name="weather">Thời tiết</string>
+    <string name="updated">Cập nhật:</string>
     <string name="app_name">MDA_Project</string>
     <string name="title_activity_information">Bản đồ</string>
     <string name="sign_up">Đăng ký</string>

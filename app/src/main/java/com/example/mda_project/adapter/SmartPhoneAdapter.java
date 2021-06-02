@@ -71,4 +71,10 @@ public class SmartPhoneAdapter extends BaseAdapter {
                 placeholder(R.drawable.noimage).error(R.drawable.error).into(viewHolder.imgSmartPhone);
         return view;
     }
+
+    public void setFilterdList(ArrayList<Product> listProducts) {
+        this.listSmartPhone = listProducts;
+
+        notifyDataSetChanged();
+    }
 }

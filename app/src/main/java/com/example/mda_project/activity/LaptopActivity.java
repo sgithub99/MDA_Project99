@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -47,6 +48,8 @@ public class LaptopActivity extends AppCompatActivity {
     boolean isLoading = false;
     boolean limitData = false;
     MHandler mHandler;
+    SearchView searchClickLaptop;
+    ArrayList<Product> filterdListLaptop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +93,31 @@ public class LaptopActivity extends AppCompatActivity {
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         footerview = inflater.inflate(R.layout.processbar, null);
         mHandler = new MHandler();
+        searchClickLaptop = findViewById(R.id.searchClickLaptop);
+        searchClickLaptop.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterdListLaptop(newText);
+                return false;
+            }
+        });
+
+    }
+    private void filterdListLaptop(String searchText) {
+        filterdListLaptop = new ArrayList<>();
+
+        for(Product product: listLaptop) {
+            if(product.getProName().toLowerCase().contains(searchText.toLowerCase())) {
+                filterdListLaptop.add(product);
+            }
+        }
+
+        laptopeAdapter.setFilterdList(filterdListLaptop);
     }
 
     private void getIdProType() {

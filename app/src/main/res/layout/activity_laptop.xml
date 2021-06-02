@@ -13,7 +13,13 @@
         app:titleTextColor="#FFFFFF"
         android:id="@+id/toolbarLaptop"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
+        android:layout_height="?attr/actionBarSize">
+        <SearchView
+            android:id="@+id/searchClickLaptop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp" />
+    </androidx.appcompat.widget.Toolbar>
 
     <ListView
         android:id="@+id/listviewLaptop"
