@@ -16,11 +16,22 @@
         app:title="Detail product"
         app:titleTextColor="#ffffff" />
 
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtubePlayerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:layout_width="match_parent"
         android:orientation="horizontal">
+
         <ImageView
 
             android:id="@+id/imageviewDetailProduct"
@@ -48,65 +59,74 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:textColor="#E80606"
                 android:text="@string/price"
+                android:textColor="#E80606"
                 android:textSize="20sp" />
 
             <Spinner
-                android:layout_margin="3dp"
-                android:padding="7dp"
-                android:background="@drawable/spinner"
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="3dp"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/spinner"
+                android:padding="7dp"
                 android:textAlignment="center" />
         </LinearLayout>
     </LinearLayout>
+
+
     <LinearLayout
-        android:layout_weight="6"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="vertical">
+
         <TextView
-            android:layout_marginTop="5dp"
-            android:textSize="30sp"
-            android:text="@string/description_detail_product"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/description_detail_product"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:textSize="20sp"
-                android:paddingBottom="10dp"
                 android:id="@+id/textviewDetailDescriptionProduct"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="10dp"
+                android:textSize="20sp" />
         </ScrollView>
+
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"></LinearLayout>
     </LinearLayout>
+
+
     <LinearLayout
-        android:layout_weight="1"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
         <Button
-            android:layout_gravity="center"
             android:id="@+id/buttonAddToCart"
-            android:textSize="20sp"
-            android:backgroundTint="#5DB075"
-            android:text="@string/add_to_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/ic_cart"/>
+            android:layout_gravity="center"
+            android:backgroundTint="#5DB075"
+            android:drawableEnd="@drawable/ic_cart"
+            android:text="@string/add_to_cart"
+            android:textSize="20sp" />
     </LinearLayout>
+
 
 </LinearLayout>

@@ -7,6 +7,10 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.mda_project.R;
 import com.example.mda_project.model.Cart;
 import com.example.mda_project.model.Product;
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerView;
 import com.squareup.picasso.Picasso;
 
 import android.content.Intent;
@@ -22,8 +26,7 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 
-
-public class DetailProduct extends AppCompatActivity {
+public class DetailProduct extends YouTubeBaseActivity {
 
     Toolbar toolbarDetailProduct;
     ImageView imgDetailProduct;
@@ -46,6 +49,26 @@ public class DetailProduct extends AppCompatActivity {
         getInformation();
         catchEventSpinner();
         eventButton();
+        final YouTubePlayerView youtubePlayerView = findViewById(R.id.youtubePlayerView);
+        playVideo("d-LeR8NXvbs", youtubePlayerView);
+    }
+
+    public void playVideo(final String videoId, YouTubePlayerView youTubePlayerView) {
+        //initialize youtube player view
+        youTubePlayerView.initialize("AIzaSyCJh7syd32PmoBGJhWl0qdqaHusDXxdiEU",
+                new YouTubePlayer.OnInitializedListener() {
+                    @Override
+                    public void onInitializationSuccess(YouTubePlayer.Provider provider,
+                                                        YouTubePlayer youTubePlayer, boolean b) {
+                        youTubePlayer.cueVideo(videoId);
+                    }
+
+                    @Override
+                    public void onInitializationFailure(YouTubePlayer.Provider provider,
+                                                        YouTubeInitializationResult youTubeInitializationResult) {
+
+                    }
+                });
     }
 
     private void eventButton() {
@@ -86,14 +109,15 @@ public class DetailProduct extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected( MenuItem item) {
-        switch (item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.menuCart:
                 Intent intent = new Intent(getApplicationContext(), CartActivity.class);
                 startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
+
     private void catchEventSpinner() {
         Integer[] listSpinner = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         ArrayAdapter<Integer> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listSpinner);
@@ -117,8 +141,8 @@ public class DetailProduct extends AppCompatActivity {
     }
 
     private void actionToolBar() {
-        setSupportActionBar(toolbarDetailProduct);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        setSupportActionBar(toolbarDetailProduct);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbarDetailProduct.setNavigationOnClickListener(v -> finish());
 
     }
