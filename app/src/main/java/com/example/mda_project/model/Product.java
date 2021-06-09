@@ -8,17 +8,20 @@ public class Product implements Serializable {
     private Integer price;
     private String proImage;
     private String description;
+    private String youtubeId;
     private int typeProId;
+
 
     public Product() {
     }
 
-    public Product(int proId, String proName, Integer price, String proImage, String description, int typeProId) {
+    public Product(int proId, String proName, Integer price, String proImage, String description, String youtubeId, int typeProId) {
         this.proId = proId;
         this.proName = proName;
         this.price = price;
         this.proImage = proImage;
         this.description = description;
+        this.youtubeId = youtubeId;
         this.typeProId = typeProId;
     }
 
@@ -68,5 +71,13 @@ public class Product implements Serializable {
 
     public void setTypeProId(int typeProId) {
         this.typeProId = typeProId;
+    }
+
+    public String getYoutubeId() {
+        return youtubeId;
+    }
+
+    public void setYoutubeId(String youtubeId) {
+        this.youtubeId = youtubeId;
     }
 }

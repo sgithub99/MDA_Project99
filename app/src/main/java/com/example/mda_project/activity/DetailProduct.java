@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +40,8 @@ public class DetailProduct extends YouTubeBaseActivity {
     String detailImg = "";
     String detailDescription = "";
     int proTypeId = 0;
+    String youtubeId = "";
+    YouTubePlayerView youtubePlayerView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +52,7 @@ public class DetailProduct extends YouTubeBaseActivity {
         getInformation();
         catchEventSpinner();
         eventButton();
-        final YouTubePlayerView youtubePlayerView = findViewById(R.id.youtubePlayerView);
-        playVideo("d-LeR8NXvbs", youtubePlayerView);
+
     }
 
     public void playVideo(final String videoId, YouTubePlayerView youTubePlayerView) {
@@ -132,6 +134,9 @@ public class DetailProduct extends YouTubeBaseActivity {
         detailPrice = product.getPrice();
         detailImg = product.getProImage();
         detailDescription = product.getDescription();
+        youtubeId = product.getYoutubeId();
+        playVideo(youtubeId, youtubePlayerView);
+//        Log.d("YoutubeId", youtubeId);
         proTypeId = product.getTypeProId();
         txtNamePro.setText(detailName);
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
@@ -153,6 +158,7 @@ public class DetailProduct extends YouTubeBaseActivity {
         txtNamePro = findViewById(R.id.textviewDetailProductName);
         txtPrice = findViewById(R.id.textviewDetailPrice);
         txtDescription = findViewById(R.id.textviewDetailDescriptionProduct);
+        youtubePlayerView = findViewById(R.id.youtubePlayerView);
         spinner = findViewById(R.id.spinner);
         buttonAddToCart = findViewById(R.id.buttonAddToCart);
     }

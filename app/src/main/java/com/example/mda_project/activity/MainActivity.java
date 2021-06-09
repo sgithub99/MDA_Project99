@@ -1,6 +1,7 @@
 package com.example.mda_project.activity;
 
 //import androidx.appcompat.app.ActionBar;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menuCart:
                 Intent intent = new Intent(getApplicationContext(), CartActivity.class);
                 startActivity(intent);
@@ -192,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
                 Integer price = 0;
                 String proImage = "";
                 String description = "";
+                String youtubeId = "";
                 int typeProId = 0;
                 for (int i = 0; i < response.length(); i++) {
                     try {
@@ -201,8 +203,9 @@ public class MainActivity extends AppCompatActivity {
                         price = jsonObject.getInt("price");
                         proImage = jsonObject.getString("proImage");
                         description = jsonObject.getString("description");
+                        youtubeId = jsonObject.getString("youtubeId");
                         typeProId = jsonObject.getInt("typeProId");
-                        listProduct.add(new Product(proId, proName, price, proImage, description, typeProId));
+                        listProduct.add(new Product(proId, proName, price, proImage, description, youtubeId, typeProId));
                         proAdapter.notifyDataSetChanged();
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -285,9 +288,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewHome.setAdapter(proAdapter);
 
 
-        if(listCart != null){
+        if (listCart != null) {
 
-        }else {
+        } else {
             listCart = new ArrayList<>();
         }
     }

@@ -139,6 +139,7 @@ public class LaptopActivity extends AppCompatActivity {
             int price;
             String proImage;
             String description;
+            String youtubeId;
             int proTypeId;
             if (response != null && response.length() != 2) {
                 listViewLaptop.removeFooterView(footerview);
@@ -151,8 +152,9 @@ public class LaptopActivity extends AppCompatActivity {
                         price = jsonObject.getInt("price");
                         proImage = jsonObject.getString("proImage");
                         description = jsonObject.getString("description");
+                        youtubeId = jsonObject.getString("youtubeId");
                         proTypeId = jsonObject.getInt("typeProId");
-                        listLaptop.add(new Product(proId, proName, price, proImage, description, proTypeId));
+                        listLaptop.add(new Product(proId, proName, price, proImage, description, youtubeId, proTypeId));
                         laptopeAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {

@@ -116,6 +116,7 @@ public class TabletActivity extends AppCompatActivity {
             int price;
             String proImage;
             String description;
+            String youtubeId;
             int proTypeId;
             if (response != null && response.length() != 2) {
                 listViewSP.removeFooterView(footerview);
@@ -128,8 +129,9 @@ public class TabletActivity extends AppCompatActivity {
                         price = jsonObject.getInt("price");
                         proImage = jsonObject.getString("proImage");
                         description = jsonObject.getString("description");
+                        youtubeId = jsonObject.getString("youtubeId");
                         proTypeId = jsonObject.getInt("typeProId");
-                        listTablet.add(new Product(proId, proName, price, proImage, description, proTypeId));
+                        listTablet.add(new Product(proId, proName, price, proImage, description, youtubeId, proTypeId));
                         tabletAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {

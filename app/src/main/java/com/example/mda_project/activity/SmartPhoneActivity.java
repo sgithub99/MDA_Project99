@@ -120,6 +120,7 @@ public class SmartPhoneActivity extends AppCompatActivity {
             int price;
             String proImage;
             String description;
+            String youtubeId;
             int proTypeId;
             if (response != null && response.length() != 2) {
                 listViewSP.removeFooterView(footerview);
@@ -132,8 +133,9 @@ public class SmartPhoneActivity extends AppCompatActivity {
                         price = jsonObject.getInt("price");
                         proImage = jsonObject.getString("proImage");
                         description = jsonObject.getString("description");
+                        youtubeId = jsonObject.getString("youtubeId");
                         proTypeId = jsonObject.getInt("typeProId");
-                        listSP.add(new Product(proId, proName, price, proImage, description, proTypeId));
+                        listSP.add(new Product(proId, proName, price, proImage, description, youtubeId, proTypeId));
                         smartPhoneAdapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
